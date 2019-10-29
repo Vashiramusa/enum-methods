@@ -20,4 +20,17 @@ module Enumerable
     self
   end
 
+  def my_select
+    return to_enum unless block_given?
+
+    selected = []
+    my_each do |element|
+      result = yield(element)
+      next unless result
+
+      selected << element
+    end
+    selected
+  end
 end
+
