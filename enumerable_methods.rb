@@ -107,4 +107,32 @@ module Enumerable
     end
     result
   end
+
+  def my_inject(*args)
+    arr = to_a.dup
+    if args[0].nil?
+      operand = arr.shift
+    elsif args[1].nil? && !block_given?
+      symbol = args[0]
+      operand = arr.shift
+    elsif args[1].nil? && block_given?
+      operand = args[0]
+    else
+      operand = args[0]
+      symbol = args[1]
+    end
+
+    arr[0..-1].my_each do |i|
+      operand = if symbol
+                  operand.send(symbol, i)
+                else
+                  yield(operand, i)
+                end
+    end
+    operand
+  end
+end
+# rubocop:enable  Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+def multiply_els(arr = [])
+  arr.my_inject(:*)
 end
