@@ -83,4 +83,16 @@ module Enumerable
     end
     result
   end
+
+  def my_count(arg = nil)
+    count = 0
+    if block_given?
+      my_each { |element| count += 1 if yield(element) }
+    elsif arg.nil?
+      my_each { |_element| count += 1 }
+    else
+      my_each { |element| count += 1 if element == arg }
+    end
+    count
+  end
 end
