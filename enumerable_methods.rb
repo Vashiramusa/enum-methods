@@ -95,4 +95,16 @@ module Enumerable
     end
     count
   end
+
+  def my_map
+    return to_enum unless block_given?
+
+    result = []
+    if self.class == Range
+      to_a.my_each_with_index { |element, index| result[index] = yield element }
+    else
+      my_each_with_index { |element, index| result[index] = yield element }
+    end
+    result
+  end
 end
