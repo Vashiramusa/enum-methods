@@ -67,6 +67,17 @@ describe Enumerable do
       end
     end
   end
-
-  
+  describe '#my_map' do
+    context 'If block is not given' do
+      it 'Return enumerable object' do
+        expect(arr.my_map.is_a?(Enumerable)).to eql(true)
+      end
+    end
+    context 'If block is given' do
+      it 'returns a new array with the results of running through the block once on a given array' do
+        answer = arr.my_map { |i| i**3 }
+        expect(answer).to eql(arr.map { |i| i**3 })
+      end
+    end
+  end
 end
