@@ -22,6 +22,7 @@ describe Enumerable do
       end
     end
   end
+
   describe '#my_each_with_index' do
     context 'if block is not given' do
       it 'returns enumerable object' do
@@ -32,6 +33,37 @@ describe Enumerable do
       it 'it iterates through the collection and yields the element and the corresponding index' do
         my_string.my_each_with_index { |_element, index| empt_arr << index }
         expect(empt_arr).to eql([0, 1, 2, 3, 4, 5, 6])
+      end
+    end
+  end
+
+  describe '#my_select' do
+    context 'if block is not given' do
+      it 'returns enumerable object' do
+        expect(arr.my_select.is_a?(Enumerable)).to eql(true)
+      end
+    end
+    context 'if block is given' do
+      it 'returns selected values in an array based on the given block' do
+        expect(arr.my_select(&:even?)).to eql([8, 12, 2, 4, 6])
+      end
+    end
+  end
+
+  describe '#my_count' do
+    context 'If block is not given' do
+      it 'Return enumerable object' do
+        expect(arr.my_count.is_a?(Enumerable)).to eql(false)
+      end
+    end
+
+    context 'If block is given' do
+      it 'returns the counts of elements that evaluate to be true' do
+        expect(arr.my_count { false }).to eql(10)
+      end
+
+      it 'returns array length' do
+        expect(arr.my_count).to eq(11)
       end
     end
   end
