@@ -58,15 +58,12 @@ describe Enumerable do
     end
 
     context 'If block is given' do
-      it 'returns the counts of elements that evaluate to be true' do
-        expect(arr.my_count { false }).to eql(10)
-      end
-
       it 'returns array length' do
         expect(arr.my_count).to eq(11)
       end
     end
   end
+
   describe '#my_map' do
     context 'If block is not given' do
       it 'Return enumerable object' do
@@ -77,6 +74,34 @@ describe Enumerable do
       it 'returns a new array with the results of running through the block once on a given array' do
         answer = arr.my_map { |i| i**3 }
         expect(answer).to eql(arr.map { |i| i**3 })
+      end
+    end
+  end
+
+  describe '#my_all?' do
+    context 'If block is not given' do
+      it 'Return enumerable object' do
+        expect(arr.my_all?.is_a?(Enumerable)).to eql(false)
+      end
+    end
+
+    context 'when passed block with condition met' do
+      it 'returns true' do
+        expect(arr.my_all? { |num| num < 15 }).to eql(true)
+      end
+    end
+  end
+
+  describe '#my_any?' do
+    context 'If block is not given' do
+      it 'Return enumerable object' do
+        expect(arr.my_any?.is_a?(Enumerable)).to eql(false)
+      end
+    end
+
+    context 'when passed block with condition met' do
+      it 'returns true' do
+        expect(arr.my_any?([5, 'dog', 50])).to eql(false)
       end
     end
   end
