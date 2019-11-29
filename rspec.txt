@@ -1,0 +1,41 @@
+
+Enumerable
+  #my_each
+    if block is not given
+[32m      returns enumerable object[0m
+    if block is given
+[32m      iterates through array of elements[0m
+  #my_each_with_index
+    if block is not given
+[32m      returns enumerable object[0m
+    if block is given
+[32m      it iterates through the collection and yields the element and the corresponding index[0m
+  #my_select
+    if block is not given
+[32m      returns enumerable object[0m
+    if block is given
+[32m      returns selected values in an array based on the given block[0m
+  #my_count
+    If block is not given
+[32m      Return enumerable object[0m
+    If block is given
+[32m      returns array length[0m
+  #my_map
+    If block is not given
+[32m      Return enumerable object[0m
+    If block is given
+[32m      returns a new array with the results of running through the block once on a given array[0m
+  #my_all?
+    If block is not given
+[32m      Return enumerable object[0m
+    when passed block with condition met
+[32m      returns true[0m
+  #my_any?
+    If block is not given
+[32m      Return enumerable object[0m
+    when passed block with condition met
+[32m      returns true[0m
+
+Finished in 0.00538 seconds (files took 0.12657 seconds to load)
+[32m14 examples, 0 failures[0m
+
